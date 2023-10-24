@@ -29,6 +29,8 @@ public class User extends BaseEntity {
     public interface Projection extends Serializable {}
 
     @Data
+    @AllArgsConstructor
+    @NoArgsConstructor(force = true)
     public static class NewUserProjection implements Projection {
         private String name;
         private String surname;
@@ -36,6 +38,8 @@ public class User extends BaseEntity {
     }
 
     @Data
+    @AllArgsConstructor
+    @NoArgsConstructor(force = true)
     public static class UserProjection implements Projection {
         private UUID uuid;
         private String name;

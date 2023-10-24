@@ -9,4 +9,5 @@ public interface UserService {
     Page<User.UserProjection> getUsers(Pageable pageable);
     User.UserProjection getUser(UUID uuid);
     void saveUser(User.NewUserProjection projection);
+    void deleteUser(UUID uuid);
 }

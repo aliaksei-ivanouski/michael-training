@@ -16,6 +16,7 @@ spring:
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+    operationsSorter: method
     groups-order: asc
     operations-sorter: method
     supported-submit-methods: ["get", "put", "post", "delete"]
