@@ -1,12 +1,16 @@
 package com.example.michaeltraining.user;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -15,13 +19,18 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/{id}")
-    public UserDTO getUser(@PathVariable("id") Long id) {
-        return userService.getUser(id);
+    @GetMapping
+    public Page<User.UserProjection> getUser(Pageable pageable) {
+        return userService.getUsers(pageable);
+    }
+
+    @GetMapping("/{uuid}")
+    public User.UserProjection getUser(@PathVariable("uuid") UUID uuid) {
+        return userService.getUser(uuid);
     }
 
     @PostMapping
-    public void getUser(@RequestBody UserDTO dto) {
-        userService.saveUser(dto);
+    public void getUser(@RequestBody User.NewUserProjection projection) {
+        userService.saveUser(projection);
     }
 }

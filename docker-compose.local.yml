@@ -31,5 +31,20 @@ services:
     networks:
       - sv
 
+  zoo-keeper:
+    container_name: 'zoo-keeper'
+    hostname: zoo1
+    image: bitnami/zookeeper:3.6.2
+    ports:
+      - '2181:2181/tcp'
+      - '2182:2181/tcp'
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+      - ZOO_SERVER_ID=1
+      - API_HOST=zoo1
+      - AUTO_CONNECT_CONNECTION_STRING=zoo1:2181,zoo1:2182
+    networks:
+      - sv
+
 networks:
   sv:

@@ -4,6 +4,6 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface UserMapper {
-    UserDTO toDto(User user);
-    User toEntity(UserDTO dto);
+    User.UserProjection toDto(User user);
+    User toEntity(User.NewUserProjection projection);
 }

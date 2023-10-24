@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="2021-10-08-1-aivanouski" author="Aliaksei Ivanouski">
+        <comment>Add schema</comment>
+        <sql>
+            create schema if not exists `paneldb`;
+        </sql>
+    </changeSet>
+    <changeSet id="2021-10-08-2-aivanouski" author="Aliaksei Ivanouski">
+        <comment>Add users table</comment>
+        <sql>
+            create table if not exists users
+            (
+                id         bigint auto_increment primary key,
+                created_at datetime(6)  null,
+                updated_at datetime(6)  null,
+                name       varchar(255) null,
+                surname    varchar(255) null,
+                age        int          null
+            );
+        </sql>
+    </changeSet>
+</databaseChangeLog>

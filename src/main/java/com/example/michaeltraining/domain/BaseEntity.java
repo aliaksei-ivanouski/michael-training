@@ -4,32 +4,33 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import java.io.Serializable;
 import java.time.Instant;
+import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor(force = true)
 @AllArgsConstructor
 @MappedSuperclass
-public abstract class BaseEntity {
+public abstract class BaseEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Type(type = "uuid-char")
+    protected UUID uuid;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+    protected Instant createdAt;
 
     @Column(name = "updated_at")
-    private Instant updatedAt;
+    protected Instant updatedAt;
 
     @PrePersist
     public void prePersist() {
@@ -37,6 +38,9 @@ public abstract class BaseEntity {
             createdAt = Instant.now();
         }
         updatedAt = Instant.now();
+        if (uuid == null) {
+            uuid = UUID.randomUUID();
+        }
     }
 
     @PreUpdate

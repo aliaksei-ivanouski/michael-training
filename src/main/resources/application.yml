@@ -10,12 +10,20 @@ spring:
   jpa:
     show-sql: true
 
+  liquibase:
+    change-log: db/migration/changelog.xml
+
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
     groups-order: asc
     operations-sorter: method
-    supported-submit-methods: []
+    supported-submit-methods: ["get", "put", "post", "delete"]
   api-docs:
     path: /api-docs
   use-fqn: true
+
+ignite-client:
+  addresses: 127.0.0.1:10800 # this is mandatory property!
+  timeout: 10000
+  tcpNoDelay: false
