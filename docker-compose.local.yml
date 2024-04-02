@@ -22,7 +22,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=12345678
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin status -U sv"]
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       interval: 2s
       timeout: 3s
       retries: 15

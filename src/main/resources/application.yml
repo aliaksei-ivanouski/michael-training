@@ -9,13 +9,15 @@ server:
 spring:
   jpa:
     show-sql: true
+  liquibase:
+    change-log: db/changelog/changelog.xml
 
 springdoc:
   swagger-ui:
-    path: /swagger-ui.html
+    path: /docs
     groups-order: asc
     operations-sorter: method
-    supported-submit-methods: []
+    supported-submit-methods: ['get', 'post']
   api-docs:
     path: /api-docs
   use-fqn: true

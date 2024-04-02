@@ -3,8 +3,6 @@ spring:
     url: jdbc:mysql://localhost:13306/paneldb?createDatabaseIfNotExist=true
     username: root
     password: 12345678
-  liquibase:
-    enabled: false
 
 logging:
   level:
