@@ -35,6 +35,10 @@ public class UserServiceImpl implements UserService {
         System.out.println("User with id " + id + "doesn't exist in DataBase");
     }
 
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
 
 
 }

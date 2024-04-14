@@ -5,4 +5,6 @@ public interface UserService {
     void saveUser(UserDTO dto);
 
     void updateUser(Long id, User user);
+
+    void deleteUser(Long id);
 }
