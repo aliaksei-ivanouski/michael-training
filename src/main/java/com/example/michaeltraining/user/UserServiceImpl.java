@@ -31,10 +31,9 @@ public class UserServiceImpl implements UserService {
             updatedUser.setSurname(user.getSurname());
             updatedUser.setAge(user.getAge());
             userRepository.save(updatedUser);
-        }
-        System.out.println("User with id " + id + "doesn't exist in DataBase");
+        } else {
+        System.out.println("User with id " + id + " doesn't exist in DataBase");}
     }
-
 
 
 }

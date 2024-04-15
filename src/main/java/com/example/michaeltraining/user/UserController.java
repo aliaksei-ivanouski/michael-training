@@ -20,7 +20,7 @@ public class UserController {
         userService.saveUser(dto);
     }
 
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public void updateUser(@PathVariable("id") Long id, User user) {
         userService.updateUser(id, user);
     }
