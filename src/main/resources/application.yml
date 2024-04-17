@@ -17,7 +17,7 @@ springdoc:
     path: /docs
     groups-order: asc
     operations-sorter: method
-    supported-submit-methods: ['get', 'post']
+    supported-submit-methods: ['get', 'post', 'put', 'delete']
   api-docs:
     path: /api-docs
   use-fqn: true
